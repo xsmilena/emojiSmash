@@ -1,3 +1,4 @@
+//EmojiList- lista de emojis
 import { useState } from 'react';
 import { StyleSheet, FlatList, Image, Platform, Pressable } from 'react-native';
 
@@ -11,6 +12,8 @@ export default function EmojiList({ onSelect, onCloseModal }) {
     require('../assets/images/emoji6.png'),
   ]);
 
+//separção dos emojis
+//ao selecionar e escolher o emoji, a aba dos emojis irá fechar
   return (
     <FlatList
       horizontal

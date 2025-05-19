@@ -1,7 +1,6 @@
-{
-  /* <Image source={PlaceholderImage} style={styles.image} /> essa parte carrega uma imagem */
-}
+/* <Image source={PlaceholderImage} style={styles.image} /> essa parte carrega uma imagem */
 // import ImageViewer from "./components/ImageViewer"; voce importa a imagem do ImagemViewer para o app.js, ou seja, voce edita naquele aquivo e ve aqui
+// o GestureHandlerRootView pemite a movimentação de icones 
 
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
@@ -14,6 +13,7 @@ import IconButton from "./components/IconButton";
 import EmojiPicker from "./components/EmojiPicker";
 import EmojiList from './components/EmojiList';
 import EmojiSticker from './components/EmojiSticker';
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 
 const PlaceholderImage = require("./assets/images/background-image.png");
@@ -49,9 +49,11 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
       <View style={styles.imageContainer}>
-      <ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage} />
+      <ImageViewer 
+      placeholderImageSource={PlaceholderImage} 
+      selectedImage={selectedImage} />
       {pickedEmoji && <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />}
       </View>
       {showAppOptions ? (
@@ -75,11 +77,11 @@ export default function App() {
           />
         </View>
       )}
-     <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
+    <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
         <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
       </EmojiPicker>
       <StatusBar style="auto" />
-    </View>
+    </GestureHandlerRootView>
   );
 }
 
